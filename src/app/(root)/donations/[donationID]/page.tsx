@@ -110,7 +110,7 @@ const Page = ({ params }: { params: Promise<{ donationID: string }> }) => {
               </div>
               <div className="card-body">
                   <div className="donation-amount">
-                      <div className="amount-display">${formatAmount(donation?.amount ? donation?.amount! : '')}</div>
+                      <div className="amount-display">${formatAmount(donation?.amount ? donation?.amount : '')}</div>
                       <div className="amount-label">Donation Amount</div>
                   </div>
 
