@@ -11,7 +11,8 @@ export function middleware(req: NextRequest) {
     pathname.startsWith('/_next') ||
     pathname.startsWith('/favicon.ico') ||
     pathname.startsWith('/assets') ||
-    pathname.startsWith('/images');
+    pathname.startsWith('/images') ||
+    pathname.startsWith('/_next/images');
 
   // Allow public assets
   if (isPublicAsset) return NextResponse.next();
