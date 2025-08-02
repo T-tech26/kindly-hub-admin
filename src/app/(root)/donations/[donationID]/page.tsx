@@ -110,7 +110,7 @@ const Page = ({ params }: { params: Promise<{ donationID: string }> }) => {
               </div>
               <div className="card-body">
                   <div className="donation-amount">
-                      <div className="amount-display">${formatAmount(donation?.amount!)}</div>
+                      <div className="amount-display">${formatAmount(donation?.amount ? donation?.amount! : '')}</div>
                       <div className="amount-label">Donation Amount</div>
                   </div>
 
@@ -158,7 +158,7 @@ const Page = ({ params }: { params: Promise<{ donationID: string }> }) => {
                           <div className="detail-item">
                               <div className="detail-label">Address Type</div>
                               <div className="detail-value">
-                                {paymentDetail?.addressType! && 
+                                {paymentDetail?.addressType && 
                                   (
                                     paymentDetail?.addressType === 'p-email' ? 'Paypal Email' 
                                       : paymentDetail?.addressType === 'p-username' ? 'Paypal username'
@@ -182,8 +182,8 @@ const Page = ({ params }: { params: Promise<{ donationID: string }> }) => {
                   </div>
 
                   <div className='flex items-center justify-between detail-item'>
-                    <button className='btn btn-primary' onClick={() => handleAction('approve', donation?.$id!)}>Approve</button>
-                    <button className='btn btn-reject' onClick={() => handleAction('reject', donation?.$id!)}>Reject</button>
+                    <button className='btn btn-primary' onClick={() => handleAction('approve', donation?.$id ? donation?.$id : '')}>Approve</button>
+                    <button className='btn btn-reject' onClick={() => handleAction('reject', donation?.$id ? donation?.$id : '')}>Reject</button>
                   </div>
 
                   <div>
