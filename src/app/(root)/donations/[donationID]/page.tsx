@@ -10,7 +10,7 @@ import { toast } from 'sonner';
 
 
 
-const page = ({ params }: { params: Promise<{ donationID: string }> }) => {
+const Page = ({ params }: { params: Promise<{ donationID: string }> }) => {
 
   const { donationID } = use(params);
 
@@ -216,4 +216,4 @@ const page = ({ params }: { params: Promise<{ donationID: string }> }) => {
   )
 }
 
-export default page
+export default Page

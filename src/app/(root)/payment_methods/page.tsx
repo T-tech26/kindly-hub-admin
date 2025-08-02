@@ -11,7 +11,7 @@ import React, { useEffect, useState } from 'react'
 import { toast } from 'sonner';
 
 
-const page = () => {
+const Page = () => {
 
   const { billingData, setBillingData } = useDataContext();
 
@@ -235,4 +235,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page

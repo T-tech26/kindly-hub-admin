@@ -107,7 +107,7 @@ const PaymentMethodForm = ({ type }: PaymentMethodFormProp) => {
 
             toast.success(data.message);
 
-            const returnData = addBillingLogo(data.data?.documents!, data.data?.logos!);
+            const returnData = data.data?.documents && data.data.logos ? addBillingLogo(data.data?.documents!, data.data?.logos!) : [];
 
             setBillingData(prev => ([...prev, returnData[0]]));
 

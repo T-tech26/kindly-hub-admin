@@ -6,7 +6,7 @@ import StorieForm from '@/components/StorieForm'
 import React, { useState } from 'react'
 
 
-const page = () => {
+const Page = () => {
 
   const [content, setContent] = useState('news');
 
@@ -47,4 +47,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page

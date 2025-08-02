@@ -105,7 +105,6 @@ export const calculateGrowth = (
 
 export const thisMonthDonations = (donations: DonationsType[]) => {
   const now = new Date();
-  const lastMonth = subMonths(now, 1);
 
   // Count donations created this month
   const currentMonthCount = donations.filter(donation =>

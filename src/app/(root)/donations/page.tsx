@@ -10,7 +10,7 @@ import { calculateGrowth, formatAmount, getTopDonors, thisMonthDonations } from 
 import React, { useEffect, useState } from 'react'
 
 
-const page = () => {
+const Page = () => {
 
   const { donations } = useDataContext();
 
@@ -252,4 +252,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page
