@@ -39,7 +39,7 @@ const Page = ({ params }: { params: Promise<{ donationID: string }> }) => {
     setTotalDonation(Number(formatAmount(String(total))));
     setAverageDonation(average);
     setFirstDonation(getFirstDonation(userDonations));
-  }, [donations])
+  }, [donations, billingData, donationID])
 
 
 
@@ -61,8 +61,14 @@ const Page = ({ params }: { params: Promise<{ donationID: string }> }) => {
 
 
   const handleEmail = async (action: string) => {
+
+    const name = donation?.fullName ? donation.fullName : '';
+    const email = donation?.email ? donation.email : '';
+    const amount = donation?.amount ? donation.amount : '';
+
     if(action === 'thank you') {
-      const data = await donationThankYou(donation?.fullName!, donation?.email!, donation?.amount!);
+
+      const data = await donationThankYou(name, email, amount);
   
       if(data.status === 'success') toast.success(data.message);
   
@@ -70,7 +76,7 @@ const Page = ({ params }: { params: Promise<{ donationID: string }> }) => {
     }
     
     if(action === 'reject') {
-      const data = await donationFailed(donation?.fullName!, donation?.email!, donation?.amount!);
+      const data = await donationFailed(name, email, amount);
   
       if(data.status === 'success') toast.success(data.message);
   
@@ -100,7 +106,7 @@ const Page = ({ params }: { params: Promise<{ donationID: string }> }) => {
           <div className="donation-card">
               <div className="card-header">
                   <h3>Donation Information</h3>
-                  <span className={`capitalize status ${donation?.status}`}>{donation?.status}</span>
+                  <span className={`capitalize status ${donation?.status && donation?.status}`}>{donation?.status && donation?.status}</span>
               </div>
               <div className="card-body">
                   <div className="donation-amount">
@@ -147,22 +153,24 @@ const Page = ({ params }: { params: Promise<{ donationID: string }> }) => {
                       <div className="details-grid">
                           <div className="detail-item">
                               <div className="detail-label">Gateway</div>
-                              <div className="detail-value uppercase">{paymentDetail?.type}</div>
+                              <div className="detail-value uppercase">{paymentDetail?.type && paymentDetail?.type}</div>
                           </div>
                           <div className="detail-item">
                               <div className="detail-label">Address Type</div>
                               <div className="detail-value">
-                                {
-                                  paymentDetail?.addressType! === 'p-email' ? 'Paypal Email' 
-                                    : paymentDetail?.addressType! === 'p-username' ? 'Paypal username'
-                                      : paymentDetail?.addressType! === 'p-phone' ? 'Paypal phone number'
-                                        : paymentDetail?.addressType! === 's-email' ? 'Skrill Email'
-                                          : paymentDetail?.addressType! === 's-username' ? 'Skrill ID'
-                                            : paymentDetail?.addressType! === 's-phone' ? 'Skrill phone number'
-                                              : paymentDetail?.addressType! === 'tron' ? 'TRC20'
-                                                : paymentDetail?.addressType! === 'bsc' ? 'BEP20'
-                                                  : paymentDetail?.addressType! === 'ton' ? 'TON'
-                                                    : ''
+                                {paymentDetail?.addressType! && 
+                                  (
+                                    paymentDetail?.addressType === 'p-email' ? 'Paypal Email' 
+                                      : paymentDetail?.addressType === 'p-username' ? 'Paypal username'
+                                        : paymentDetail?.addressType === 'p-phone' ? 'Paypal phone number'
+                                          : paymentDetail?.addressType === 's-email' ? 'Skrill Email'
+                                            : paymentDetail?.addressType === 's-username' ? 'Skrill ID'
+                                              : paymentDetail?.addressType === 's-phone' ? 'Skrill phone number'
+                                                : paymentDetail?.addressType === 'tron' ? 'TRC20'
+                                                  : paymentDetail?.addressType === 'bsc' ? 'BEP20'
+                                                    : paymentDetail?.addressType === 'ton' ? 'TON'
+                                                      : ''
+                                  )
                                 }
                               </div>
                           </div>

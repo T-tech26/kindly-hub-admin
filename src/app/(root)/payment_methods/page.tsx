@@ -5,7 +5,6 @@ import PaymentMethodForm from '@/components/PaymentMethodForm';
 import { useDataContext } from '@/context/DataContext';
 import { deletePaymentMethod, getAllPaymentMethods } from '@/lib/actions';
 import { addBillingLogo } from '@/lib/utils';
-import { Metadata } from 'next';
 import Image from 'next/image';
 import React, { useEffect, useState } from 'react'
 import { toast } from 'sonner';

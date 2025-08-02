@@ -107,7 +107,10 @@ const PaymentMethodForm = ({ type }: PaymentMethodFormProp) => {
 
             toast.success(data.message);
 
-            const returnData = data.data?.documents && data.data.logos ? addBillingLogo(data.data?.documents!, data.data?.logos!) : [];
+            const documents = data.data?.documents ? data.data?.documents : [];
+            const logos = data.data?.logos ? data.data?.logos! : [];
+
+            const returnData = addBillingLogo(documents, logos);
 
             setBillingData(prev => ([...prev, returnData[0]]));
 
@@ -204,7 +207,7 @@ const PaymentMethodForm = ({ type }: PaymentMethodFormProp) => {
                 <label className="form-label">Logo Image</label>
                 <div className="file-upload" onClick={() => imgRef.current?.click()}>
                     {previewImage ? (
-                        <img 
+                        <Image 
                             src={previewImage} 
                             width={100}
                             height={100}
