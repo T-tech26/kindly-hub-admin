@@ -11,11 +11,12 @@ export function middleware(req: NextRequest) {
     pathname.startsWith('/_next') ||
     pathname.startsWith('/favicon.ico') ||
     pathname.startsWith('/assets') ||
-    pathname.startsWith('/images') ||
-    pathname.startsWith('/_next/images');
+    pathname.startsWith('/images');
 
   // Allow public assets
-  if (isPublicAsset) return NextResponse.next();
+  if (isPublicAsset) {
+    return NextResponse.next();
+  }
 
   // ✅ If logged in and visiting /login, redirect to dashboard
   if (isLogin && session) {
@@ -31,7 +32,6 @@ export function middleware(req: NextRequest) {
 }
 
 export const config = {
-  matcher: [
-    '/((?!api|_next/static|_next/image|favicon.ico|images/|assets/|fonts/).*)',
-  ],
+  matcher: ['/:path*']
 };
+
