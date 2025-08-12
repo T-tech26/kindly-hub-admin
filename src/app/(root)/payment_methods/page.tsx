@@ -91,12 +91,6 @@ const Page = () => {
                 <h3>Payment Methods</h3>
                 <div className="payment-methods">
                     <button 
-                      className={`payment-method ${method === 'card' ? 'active' : 'btn'}`}
-                      onClick={() => setMethod('card')}
-                    >
-                      Credit Card
-                    </button>
-                    <button 
                       className={`payment-method ${method === 'paypal' ? 'active' : 'btn'}`}
                       onClick={() => setMethod('paypal')}
                     >
@@ -115,16 +109,6 @@ const Page = () => {
                       Crypto
                     </button>
                 </div>
-
-                {method === 'card' && (
-                    <Image
-                      src='/hope-bridge-logo.png'
-                      width={200}
-                      height={200}
-                      alt='paypal logo'
-                      className='w-auto h-auto'
-                    />
-                )}
 
                 <div className='flex flex-col gap-5'>
                   {method === 'paypal' && paypal.length > 0 && (
