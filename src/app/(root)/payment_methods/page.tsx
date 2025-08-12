@@ -15,7 +15,7 @@ const Page = () => {
   const { billingData, setBillingData } = useDataContext();
 
   const [type, setType] = useState('paypal');
-  const [method, setMethod] = useState('card');
+  const [method, setMethod] = useState('paypal');
   const [paypal, setPaypal] = useState<PaymentMethodType[]>([]);
   const [skrill, setSkrill] = useState<PaymentMethodType[]>([]);
   const [crypto, setCrypto] = useState<PaymentMethodType[]>([]);
