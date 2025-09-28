@@ -26,15 +26,20 @@ const Page = ({ params }: { params: Promise<{ donationID: string }> }) => {
 
   
   useEffect(() => {
-    const getDoantion = donations.find(donation => donation.$id === donationID);
-    const details = billingData.find(detail => detail.$id === getDoantion?.billingDataID); 
-
-    const userDonations = donations.filter(donor => donor.email === getDoantion?.email && donor.status === 'completed'); 
-    const total = userDonations.reduce((sum, donation) => sum + Number(donation.amount), 0);
-    const average = total / userDonations.length;
-
+      const getDoantion = donations.find(donation => donation.$id === donationID);
+      
+      if(billingData.length > 0) {
+        const details = billingData.find(detail => detail.$id === getDoantion?.billingDataID);
+        setPaymentDetail(details!);
+      };
+      
+      const userDonations = donations.filter(donor => donor.email === getDoantion?.email && donor.status === 'completed'); 
+      const total = userDonations.reduce((sum, donation) => sum + Number(donation.amount), 0);
+      const average = total / userDonations.length;
+      
+      
+      
     setDonation(getDoantion!);
-    setPaymentDetail(details!);
     setNumberOfDonations(userDonations);
     setTotalDonation(Number(formatAmount(String(total))));
     setAverageDonation(average);
@@ -169,7 +174,8 @@ const Page = ({ params }: { params: Promise<{ donationID: string }> }) => {
                                                 : paymentDetail?.addressType === 'tron' ? 'TRC20'
                                                   : paymentDetail?.addressType === 'bsc' ? 'BEP20'
                                                     : paymentDetail?.addressType === 'ton' ? 'TON'
-                                                      : ''
+                                                      : paymentDetail?.addressType === 'btc' ? 'BTC'
+                                                        : ''
                                   )
                                 }
                               </div>
