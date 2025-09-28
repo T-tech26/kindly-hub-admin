@@ -191,8 +191,9 @@ const Page = () => {
                           <p className='text-[#666] text-sm flex items-center justify-between'>Network Type <span>
                             {
                               data.addressType === 'tron' ? 'TRC20'
-                                : data.addressType === 'bsc' ? 'BEP20'
-                                  : 'Ton'
+                                : data.addressType === 'btc' ? 'BTC'
+                                  : data.addressType === 'bsc' ? 'BEP20'
+                                    : 'TON'
                             }
                           </span></p>
                           <p className='text-[#666] text-sm flex items-center justify-between text-wrap'>Address <span>{data.address.length > 20 ? `${data.address.slice(0, 20)}...` : data.address}</span></p>

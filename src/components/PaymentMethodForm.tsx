@@ -151,9 +151,10 @@ const PaymentMethodForm = ({ type }: PaymentMethodFormProp) => {
                     {type === 'crypto' && (
                         <>
                             <option value="">Select category</option>
+                            <option value="btc">BTC</option>
                             <option value="tron">TRC20</option>
                             <option value="bsc">BEP20</option>
-                            <option value="ton">Ton</option>
+                            <option value="ton">TON</option>
                         </>
                     )}
                 </select>
@@ -171,8 +172,9 @@ const PaymentMethodForm = ({ type }: PaymentMethodFormProp) => {
                                     : formData.addressType === 's-number' ? 'Skrill Mobile Number'
                                         : formData.addressType === 'tron' ? 'TRC20 Address'
                                             : formData.addressType === 'bsc' ? 'BEP20 Address'
-                                                : formData.addressType === 'ton' ? 'Ton Address'
-                                                    : 'Address'
+                                                : formData.addressType === 'ton' ? 'TON Address'
+                                                    : formData.addressType === 'btc' ? 'BTC Address'
+                                                        : 'Address'
                 } <span className="required">*</span>
             </label>
             <input 
@@ -189,8 +191,9 @@ const PaymentMethodForm = ({ type }: PaymentMethodFormProp) => {
                                     : formData.addressType === 's-number' ? 'Enter Skrill mobile number'
                                         : formData.addressType === 'tron' ? 'Enter TRC20 address'
                                             : formData.addressType === 'bsc' ? 'Enter BEP20 address'
-                                                : formData.addressType === 'ton' ? 'Enter Ton address'
-                                                    : 'Enter address'
+                                                : formData.addressType === 'ton' ? 'Enter TON address'
+                                                    : formData.addressType === 'btc' ? 'Enter BTC address'
+                                                        : 'Enter address'
                 } 
                 onChange={handleChange}
             />
@@ -258,8 +261,9 @@ const PaymentMethodForm = ({ type }: PaymentMethodFormProp) => {
                                                 : formData.addressType === 's-number' ? 'Skrill mobile number'
                                                     : formData.addressType === 'tron' ? 'TRC20 address'
                                                         : formData.addressType === 'bsc' ? 'BEP20 address'
-                                                            : formData.addressType === 'ton' ? 'Ton address'
-                                                                : 'Address'
+                                                            : formData.addressType === 'ton' ? 'TON address'
+                                                                : formData.addressType === 'btc' ? 'BTC address'
+                                                                    : 'Address'
                         }</span></p>
                         <p className='text-[#666] text-sm flex items-center justify-between'>Email <span>{formData.address}</span></p>
                     </div>
